@@ -1,16 +1,12 @@
-# pemmobile
+# Globetrivia
 
-A new Flutter project.
+a Mobile app that provides article and calculator feature.
 
-## Getting Started
+## Stack Use
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This project is a mobile app project using Dart, Flutter and some dependencies like :
+- cupertino_icons: ^1.0.2
+- google_fonts: ^6.1.0
+- carousel_slider: ^4.2.1
+- curved_nav_bar: ^0.0.2
+- curved_navigation_bar: ^1.0.3
