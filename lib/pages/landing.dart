@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pemmobile/main.dart';
 import 'package:pemmobile/pages/login.dart';
 import 'package:pemmobile/pages/register.dart';
 
@@ -69,8 +70,7 @@ class LandingPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()),
+                          CustomPageRouteTransition(route: const LoginPage()),
                           (Route<dynamic> route) => false,
                         );
                       },
@@ -88,8 +88,8 @@ class LandingPage extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushAndRemoveUntil(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const RegisterPage()),
+                          CustomPageRouteTransition(
+                              route: const RegisterPage()),
                           (Route<dynamic> route) => false,
                         );
                       },

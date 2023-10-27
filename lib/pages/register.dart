@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pemmobile/main.dart';
 import 'package:pemmobile/pages/googleLogin.dart';
 
 import 'package:pemmobile/pages/login.dart';
@@ -266,8 +267,7 @@ class RegisterPage extends StatelessWidget {
                     onTap: () {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
+                        CustomPageRouteTransition(route: const LoginPage()),
                         (Route<dynamic> route) => false,
                       );
                     },

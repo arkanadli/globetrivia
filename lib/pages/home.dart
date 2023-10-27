@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:pemmobile/main.dart';
 import 'package:pemmobile/pages/articleTab.dart';
 import 'package:pemmobile/pages/calculatorTab.dart';
 import 'package:pemmobile/pages/login.dart';
@@ -45,8 +46,7 @@ class _HomePageState extends State<HomePage> {
                 onPressed: () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()),
+                      CustomPageRouteTransition(route: const LoginPage()),
                       (route) => false);
                 },
                 icon: const Icon(Icons.logout)),

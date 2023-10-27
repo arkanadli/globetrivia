@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pemmobile/main.dart';
 import 'package:pemmobile/pages/forgotPassword.dart';
 import 'package:pemmobile/pages/home.dart';
 import 'package:pemmobile/pages/register.dart';
@@ -205,6 +206,18 @@ class _LoginPageState extends State<LoginPage> {
                                   )),
                           (Route<dynamic> route) => false,
                         );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Login Successfully welcome ${usernameTextController.text}',
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(12))),
+                          ),
+                        );
                       } else {
                         alert = 'Invalid username or password!';
                       }
@@ -243,12 +256,13 @@ class _LoginPageState extends State<LoginPage> {
                           fontSize: 18, fontWeight: FontWeight.w500),
                       backgroundColor: const Color.fromARGB(255, 21, 20, 26)),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const HomePage(user: 'Google user'),
-                      ),
+                      CustomPageRouteTransition(
+                          route: const HomePage(
+                        user: 'Google User',
+                      )),
+                      (Route<dynamic> route) => false,
                     );
                   },
                   child: Row(
@@ -288,8 +302,7 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegisterPage()),
+                        CustomPageRouteTransition(route: const RegisterPage()),
                         (Route<dynamic> route) => false,
                       );
                     },

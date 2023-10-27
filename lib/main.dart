@@ -20,3 +20,28 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class CustomPageRouteTransition extends PageRouteBuilder {
+  final Widget route;
+  CustomPageRouteTransition({required this.route})
+      : super(
+            pageBuilder: (context, animation, secondaryAnimation) {
+              // as the destination page transition
+              return route;
+            },
+            transitionDuration: const Duration(milliseconds: 300),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+              final slideAnimation =
+                  Tween(begin: const Offset(0.3, 0.1), end: Offset.zero)
+                      .animate(CurvedAnimation(
+                          parent: animation, curve: Curves.easeInOut));
+              return FadeTransition(
+                opacity: animation,
+                child: SlideTransition(
+                  position: slideAnimation,
+                  child: child,
+                ),
+              );
+            });
+}
