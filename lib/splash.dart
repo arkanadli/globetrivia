@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:pemmobile/pages/landing.dart';
 
@@ -8,11 +10,26 @@ class Splash extends StatefulWidget {
   State<Splash> createState() => _SplashState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashState extends State<Splash> with TickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> fadeAnimation;
   @override
   void initState() {
     _loadingScreen();
     super.initState();
+    controller =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    fadeAnimation = Tween(begin: 0.2, end: 1.0)
+        .animate(CurvedAnimation(parent: controller, curve: Curves.easeInOut));
+
+    fadeAnimation.addListener(() {
+      if (fadeAnimation.isCompleted) {
+        controller.reverse();
+      }
+      if (fadeAnimation.isDismissed) {
+        controller.forward();
+      }
+    });
   }
 
   _loadingScreen() async {
@@ -38,10 +55,15 @@ class _SplashState extends State<Splash> {
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              'GLOBEPEDIA TRIVIA',
-              style: TextStyle(
-                  fontSize: 24, letterSpacing: 2, fontWeight: FontWeight.bold),
+            FadeTransition(
+              opacity: fadeAnimation,
+              child: const Text(
+                'GLOBEPEDIA TRIVIA',
+                style: TextStyle(
+                    fontSize: 24,
+                    letterSpacing: 2,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),
