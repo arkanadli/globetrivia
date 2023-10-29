@@ -11,7 +11,7 @@ class _CalculatorTabState extends State<CalculatorTab> {
   TextEditingController input1Field = TextEditingController();
   TextEditingController input2Field = TextEditingController();
   TextEditingController output = TextEditingController();
-  String result = '0';
+  String result = '0 ';
 
   @override
   Widget build(BuildContext context) {
