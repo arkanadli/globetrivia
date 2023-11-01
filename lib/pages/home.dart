@@ -1,8 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:pemmobile/main.dart';
-import 'package:pemmobile/pages/articleTab.dart';
-import 'package:pemmobile/pages/calculatorTab.dart';
+import 'package:pemmobile/pages/Tab/articleTab.dart';
+import 'package:pemmobile/pages/Tab/bmiTab.dart';
+import 'package:pemmobile/pages/Tab/calculatorTab.dart';
+import 'package:pemmobile/pages/Tab/converterTab.dart';
 import 'package:pemmobile/pages/login.dart';
 
 // import 'package:google_fonts/google_fonts.dart';
@@ -18,7 +20,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  List<Widget> tab = [const ArticleTab(), const CalculatorTab()];
+  List<Widget> tab = [
+    const ArticleTab(),
+    const CalculatorTab(),
+    const BMITab(),
+    const ConverterTab()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +72,12 @@ class _HomePageState extends State<HomePage> {
         animationDuration: const Duration(milliseconds: 500),
         animationCurve: Curves.ease,
         buttonBackgroundColor: const Color.fromARGB(255, 171, 25, 207),
-        items: const [Icon(Icons.article_outlined), Icon(Icons.calculate)],
+        items: const [
+          Icon(Icons.article_outlined),
+          Icon(Icons.calculate),
+          Icon(Icons.monitor_weight),
+          Icon(Icons.money)
+        ],
         onTap: (value) {
           setState(() {
             currentIndex = value;
