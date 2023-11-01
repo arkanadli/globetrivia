@@ -10,27 +10,10 @@ class GrafikTab extends StatefulWidget {
 
 class GrafikTabState extends State<GrafikTab> {
   List<Color> gradientColors = [Colors.green, Colors.yellow];
-  int count = 0;
-  late List<FlSpot> listData;
-  TextEditingController inputController = TextEditingController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    listData = [
-      const FlSpot(0, 20),
-      const FlSpot(1, 34),
-      const FlSpot(2, 56),
-      const FlSpot(3, 26),
-      const FlSpot(4, 67),
-      const FlSpot(5, 46),
-      const FlSpot(6, 69),
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: <Widget>[
         AspectRatio(
           aspectRatio: 1.70,
@@ -46,63 +29,6 @@ class GrafikTabState extends State<GrafikTab> {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: TextField(
-            controller: inputController,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              label: Text('Data Input'),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white54),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(16),
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.white54),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(16),
-                ),
-              ),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: SizedBox(
-            height: 50,
-            width: double.maxFinite,
-            child: TextButton(
-              style: TextButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  textStyle: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                  backgroundColor: const Color.fromARGB(255, 142, 50, 158),
-                  foregroundColor: Colors.white),
-              onPressed: () {
-                double lastData = double.parse(listData.length.toString());
-                double valueInput =
-                    double.parse(inputController.text.toString());
-
-                try {
-                  print(lastData);
-                  print(inputController.text);
-                  listData.insert(
-                      lastData.toInt(),
-                      FlSpot(double.parse(listData.length.toString()),
-                          valueInput));
-                  setState(() {});
-                  print('ayoo');
-                } catch (e) {
-                  print('$e');
-                }
-              },
-              child: const Text('Input'),
-            ),
-          ),
-        ),
       ],
     );
   }
@@ -114,14 +40,14 @@ class GrafikTabState extends State<GrafikTab> {
     );
     Widget text;
     switch (value.toInt()) {
-      case 1:
+      case 2:
+        text = const Text('MAR', style: style);
+        break;
+      case 5:
+        text = const Text('JUN', style: style);
+        break;
+      case 8:
         text = const Text('SEP', style: style);
-        break;
-      case 4:
-        text = const Text('OCT', style: style);
-        break;
-      case 7:
-        text = const Text('NOV', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -141,14 +67,14 @@ class GrafikTabState extends State<GrafikTab> {
     );
     String text;
     switch (value.toInt()) {
-      case 25:
-        text = '25%';
+      case 1:
+        text = '10K';
         break;
-      case 50:
-        text = '55%';
+      case 3:
+        text = '30k';
         break;
-      case 75:
-        text = '75%';
+      case 5:
+        text = '50k';
         break;
       default:
         return Container();
@@ -162,7 +88,7 @@ class GrafikTabState extends State<GrafikTab> {
       gridData: FlGridData(
         show: true,
         drawVerticalLine: true,
-        horizontalInterval: 10,
+        horizontalInterval: 1,
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           return const FlLine(
@@ -207,12 +133,20 @@ class GrafikTabState extends State<GrafikTab> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: listData.length.toDouble(),
+      maxX: 11,
       minY: 0,
-      maxY: 100,
+      maxY: 6,
       lineBarsData: [
         LineChartBarData(
-          spots: listData,
+          spots: const [
+            FlSpot(0, 3),
+            FlSpot(2.6, 2),
+            FlSpot(4.9, 5),
+            FlSpot(6.8, 3.1),
+            FlSpot(8, 4),
+            FlSpot(9.5, 3),
+            FlSpot(11, 4),
+          ],
           isCurved: true,
           gradient: LinearGradient(
             colors: gradientColors,

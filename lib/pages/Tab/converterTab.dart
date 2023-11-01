@@ -10,17 +10,13 @@ class ConverterTab extends StatefulWidget {
 class _ConverterTabState extends State<ConverterTab> {
   TextEditingController dollarController = TextEditingController();
   TextEditingController idrController = TextEditingController();
-  double result = 0;
+  String output = '0';
   void convertCurrency() {
     double userInput =
         dollarController.text != '' ? double.parse(dollarController.text) : 0;
-    result = userInput * 15535.95;
     // :: this will tell the widget that this need to be rebuild, only rebuild needed widgets
     // :: its only can in statefull widgets
     setState(() {});
-
-    print(userInput);
-    print(result);
   }
 
   @override
@@ -34,7 +30,7 @@ class _ConverterTabState extends State<ConverterTab> {
           Container(
             margin: const EdgeInsets.only(bottom: 50),
             child: Text(
-              "Rp. ${result != 0 ? result.toStringAsFixed(2) : "0"}",
+              output,
               style: const TextStyle(
                 fontSize: 45,
                 fontWeight: FontWeight.bold,
@@ -46,7 +42,7 @@ class _ConverterTabState extends State<ConverterTab> {
             controller: dollarController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              hintText: 'Masukkan dollar',
+              label: Text('Nominal'),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white54),
                 borderRadius: BorderRadius.all(
@@ -80,7 +76,7 @@ class _ConverterTabState extends State<ConverterTab> {
                   setState(() {
                     double dollar = double.parse(dollarController.text);
                     final x = dollar * 15453;
-                    result = x;
+                    output = 'RP. ${x.toStringAsFixed(2)}';
                   });
                 } catch (e) {}
               },
@@ -106,7 +102,7 @@ class _ConverterTabState extends State<ConverterTab> {
                   setState(() {
                     double dollar = double.parse(dollarController.text);
                     final x = dollar / 15343;
-                    result = x;
+                    output = '\$. ${x.toStringAsFixed(2)}';
                   });
                 } catch (e) {}
               },
