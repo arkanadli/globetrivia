@@ -28,14 +28,22 @@ class _SplashState extends State<Splash> with TickerProviderStateMixin {
         controller.forward();
       }
     });
+    controller.forward();
   }
 
   _loadingScreen() async {
-    await Future.delayed(const Duration(seconds: 3), () {});
+    await Future.delayed(const Duration(seconds: 5), () {});
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => const LandingPage()),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    controller.dispose();
+    super.dispose();
   }
 
   @override

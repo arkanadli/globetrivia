@@ -6,6 +6,7 @@ import 'package:pemmobile/pages/Tab/bmiTab.dart';
 import 'package:pemmobile/pages/Tab/calculatorTab.dart';
 import 'package:pemmobile/pages/Tab/converterTab.dart';
 import 'package:pemmobile/pages/Tab/grafikTab.dart';
+import 'package:pemmobile/pages/Tab/profileTab.dart';
 import 'package:pemmobile/pages/login.dart';
 
 // import 'package:google_fonts/google_fonts.dart';
@@ -26,7 +27,8 @@ class _HomePageState extends State<HomePage> {
     const CalculatorTab(),
     const BMITab(),
     const ConverterTab(),
-    const GrafikTab()
+    const GrafikTab(),
+    const ProfileTab(),
   ];
 
   @override
@@ -79,7 +81,8 @@ class _HomePageState extends State<HomePage> {
           Icon(Icons.calculate),
           Icon(Icons.balance),
           Icon(Icons.attach_money_sharp),
-          Icon(Icons.broken_image_outlined)
+          Icon(Icons.broken_image_outlined),
+          Icon(Icons.gpp_good_rounded)
         ],
         onTap: (value) {
           setState(() {

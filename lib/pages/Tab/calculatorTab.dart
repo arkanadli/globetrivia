@@ -18,7 +18,19 @@ class _CalculatorTabState extends State<CalculatorTab> {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Text(
+            'CALCULATOR',
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.normal,
+              color: Color.fromARGB(255, 142, 50, 158),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           TextField(
             controller: input1Field,
             keyboardType: TextInputType.number,

@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   String alert = '';
   String username = '';
   String password = '';
+  bool isHide = true;
 
   @override
   Widget build(BuildContext context) {
@@ -113,31 +114,41 @@ class _LoginPageState extends State<LoginPage> {
                 style: const TextStyle(
                     // color: Color.fromARGB(255, 0, 0, 0),
                     ),
-                decoration: const InputDecoration(
+                obscureText: isHide,
+                decoration: InputDecoration(
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 18, horizontal: -5),
+                      const EdgeInsets.symmetric(vertical: 18, horizontal: -5),
                   // isDense: true,
 
                   filled: true,
-                  fillColor: Color.fromARGB(255, 18, 22, 24),
+                  fillColor: const Color.fromARGB(255, 18, 22, 24),
                   hintText: 'Password',
-                  hintStyle: TextStyle(
+                  hintStyle: const TextStyle(
                     fontSize: 14,
                   ),
-                  prefixIconConstraints: BoxConstraints(minWidth: 70),
-                  prefixIcon: Icon(Icons.lock_outline_rounded),
+                  prefixIconConstraints: const BoxConstraints(minWidth: 70),
+                  prefixIcon: const Icon(Icons.lock_outline_rounded),
                   prefixIconColor: Colors.white54,
-                  suffixIcon: Icon(Icons.remove_red_eye_outlined),
-                  suffixIconConstraints: BoxConstraints(minWidth: 70),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      setState(() {
+                        isHide = !isHide;
+                      });
+                    },
+                    child: const Icon(
+                      Icons.remove_red_eye_outlined,
+                    ),
+                  ),
+                  suffixIconConstraints: const BoxConstraints(minWidth: 70),
                   suffixIconColor: Colors.white54,
-                  enabledBorder: OutlineInputBorder(
+                  enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                         color: Color.fromARGB(131, 138, 124, 124), width: 1),
                     borderRadius: BorderRadius.all(
                       Radius.circular(30),
                     ),
                   ),
-                  focusedBorder: OutlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                         color: Color.fromARGB(255, 247, 220, 220), width: 1),
                     borderRadius: BorderRadius.all(

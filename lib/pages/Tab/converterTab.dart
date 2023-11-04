@@ -27,12 +27,23 @@ class _ConverterTabState extends State<ConverterTab> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Text(
+            'CURRENCY CONVERTER',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.normal,
+              color: Color.fromARGB(255, 142, 50, 158),
+            ),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
           Container(
             margin: const EdgeInsets.only(bottom: 50),
             child: Text(
               output,
               style: const TextStyle(
-                fontSize: 45,
+                fontSize: 40,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 255, 255, 255),
               ),
@@ -75,7 +86,7 @@ class _ConverterTabState extends State<ConverterTab> {
                 try {
                   setState(() {
                     double dollar = double.parse(dollarController.text);
-                    final x = dollar * 15453;
+                    final x = dollar * 15453.54;
                     output = 'RP. ${x.toStringAsFixed(2)}';
                   });
                 } catch (e) {}
@@ -101,7 +112,7 @@ class _ConverterTabState extends State<ConverterTab> {
                 try {
                   setState(() {
                     double dollar = double.parse(dollarController.text);
-                    final x = dollar / 15343;
+                    final x = dollar / 15453.54;
                     output = '\$. ${x.toStringAsFixed(2)}';
                   });
                 } catch (e) {}

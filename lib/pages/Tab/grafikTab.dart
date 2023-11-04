@@ -23,7 +23,7 @@ class GrafikTabState extends State<GrafikTab> {
       const FlSpot(2, 56),
       const FlSpot(3, 26),
       const FlSpot(4, 67),
-      const FlSpot(5, 46),
+      const FlSpot(5, 436),
       const FlSpot(6, 69),
     ];
   }
@@ -31,7 +31,19 @@ class GrafikTabState extends State<GrafikTab> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        const Text(
+          'GRAFIK DATA SENSOR',
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.normal,
+            color: Color.fromARGB(255, 142, 50, 158),
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
         AspectRatio(
           aspectRatio: 1.70,
           child: Padding(
@@ -87,14 +99,11 @@ class GrafikTabState extends State<GrafikTab> {
                     double.parse(inputController.text.toString());
 
                 try {
-                  print(lastData);
-                  print(inputController.text);
                   listData.insert(
                       lastData.toInt(),
                       FlSpot(double.parse(listData.length.toString()),
                           valueInput));
                   setState(() {});
-                  print('ayoo');
                 } catch (e) {
                   print('$e');
                 }
@@ -122,6 +131,9 @@ class GrafikTabState extends State<GrafikTab> {
         break;
       case 7:
         text = const Text('NOV', style: style);
+        break;
+      case 10:
+        text = const Text('Desember', style: style);
         break;
       default:
         text = const Text('', style: style);
@@ -207,7 +219,7 @@ class GrafikTabState extends State<GrafikTab> {
         border: Border.all(color: const Color(0xff37434d)),
       ),
       minX: 0,
-      maxX: listData.length.toDouble(),
+      maxX: listData.length.toDouble() - 1,
       minY: 0,
       maxY: 100,
       lineBarsData: [

@@ -10,6 +10,66 @@ class ProfileTab extends StatefulWidget {
 class _ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Text(
+            'Author',
+            style: TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 142, 50, 158),
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(150),
+            child: const Image(
+              image: AssetImage('assets/fotoarkan3.jpg'),
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+              width: 300,
+              height: 300,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const SizedBox(
+            width: double.maxFinite,
+            child: Text(
+              'Muhammad Arkan Adli',
+              style: TextStyle(fontSize: 28),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(
+            width: double.maxFinite,
+            child: Text(
+              '19 Years Old',
+              style: TextStyle(fontSize: 28),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(
+            width: double.maxFinite,
+            child: Text(
+              'Studying in Institute Technology National Bandung',
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          const SizedBox(
+            width: double.maxFinite,
+            child: Text(
+              'Number Student : 152021168',
+              style: TextStyle(fontSize: 18),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

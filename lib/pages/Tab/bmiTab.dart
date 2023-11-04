@@ -12,10 +12,13 @@ class _BMITabState extends State<BMITab> {
   final TextEditingController beratController = TextEditingController();
   final TextEditingController outputController = TextEditingController();
 
+  late String _gender;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    _gender = '';
   }
 
   @override
@@ -23,7 +26,19 @@ class _BMITabState extends State<BMITab> {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          const Text(
+            'BMI CALCULATOR',
+            style: TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.normal,
+              color: Color.fromARGB(255, 142, 50, 158),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           TextField(
             controller: tinggiController,
             keyboardType: TextInputType.number,
@@ -68,6 +83,34 @@ class _BMITabState extends State<BMITab> {
           const SizedBox(
             height: 20,
           ),
+          SizedBox(
+            width: 200,
+            child: DropdownButton(
+              alignment: AlignmentDirectional.topStart,
+              items: const [
+                DropdownMenuItem<String>(
+                  value: 'Wanita',
+                  child: Text('Wanita'),
+                ),
+                DropdownMenuItem<String>(
+                  value: 'Pria',
+                  child: Text('Pria'),
+                ),
+              ],
+              value: _gender.isNotEmpty ? _gender : null,
+              iconSize: 36,
+              isExpanded: true,
+              hint: const Text('Gender'),
+              onChanged: (value) {
+                setState(() {
+                  _gender = value!;
+                });
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           TextField(
             textAlign: TextAlign.end,
             readOnly: true,
@@ -75,7 +118,6 @@ class _BMITabState extends State<BMITab> {
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               label: Text('Output'),
-              hintText: 'output',
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white54),
                 borderRadius: BorderRadius.all(
@@ -91,28 +133,35 @@ class _BMITabState extends State<BMITab> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 100,
           ),
-          TextButton(
-            style: TextButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                textStyle:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                backgroundColor: const Color.fromARGB(255, 142, 50, 158),
-                foregroundColor: Colors.white),
-            onPressed: () {
-              try {
-                setState(() {
-                  double berat = double.parse(beratController.text);
-                  double tinggi = (int.parse(tinggiController.text) / 100);
-                  final x = berat / (tinggi * tinggi);
-                  outputController.text = x.toStringAsFixed(2);
-                });
-              } catch (e) {}
-            },
-            child: const Text('Calculate'),
+          SizedBox(
+            height: 100,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  textStyle: const TextStyle(
+                      fontSize: 16, fontWeight: FontWeight.bold),
+                  backgroundColor: const Color.fromARGB(255, 142, 50, 158),
+                  foregroundColor: Colors.white,
+                  shape: const CircleBorder()),
+              onPressed: () {
+                try {
+                  setState(() {
+                    double berat = double.parse(beratController.text);
+                    double tinggi = (int.parse(tinggiController.text) / 100);
+                    final x = berat / (tinggi * tinggi);
+                    outputController.text = x.toStringAsFixed(2);
+                  });
+                } catch (e) {}
+              },
+              child: const Text('Calculate'),
+            ),
           ),
+          const SizedBox(
+            height: 30,
+          )
         ],
       ),
     );
