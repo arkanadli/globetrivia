@@ -23,7 +23,7 @@ class GrafikTabState extends State<GrafikTab> {
       const FlSpot(2, 56),
       const FlSpot(3, 26),
       const FlSpot(4, 67),
-      const FlSpot(5, 436),
+      const FlSpot(5, 46),
       const FlSpot(6, 69),
     ];
   }
