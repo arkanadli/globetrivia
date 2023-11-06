@@ -23,14 +23,25 @@ class _ProfileTabState extends State<ProfileTab> {
               color: Color.fromARGB(255, 142, 50, 158),
             ),
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(150),
-            child: const Image(
-              image: AssetImage('assets/fotoarkan3.jpg'),
-              alignment: Alignment.center,
-              fit: BoxFit.cover,
-              width: 300,
-              height: 300,
+          Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(150),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.purple,
+                    spreadRadius: 2,
+                    blurRadius: 20,
+                  )
+                ]),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(150),
+              child: const Image(
+                image: AssetImage('assets/fotoarkan3.jpg'),
+                alignment: Alignment.center,
+                fit: BoxFit.cover,
+                width: 300,
+                height: 300,
+              ),
             ),
           ),
           const SizedBox(
@@ -56,7 +67,7 @@ class _ProfileTabState extends State<ProfileTab> {
             width: double.maxFinite,
             child: Text(
               'Studying in Institute Technology National Bandung',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
               textAlign: TextAlign.center,
             ),
           ),
@@ -64,7 +75,7 @@ class _ProfileTabState extends State<ProfileTab> {
             width: double.maxFinite,
             child: Text(
               'Number Student : 152021168',
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
               textAlign: TextAlign.center,
             ),
           ),

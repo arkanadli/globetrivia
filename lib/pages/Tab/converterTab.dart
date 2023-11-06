@@ -89,7 +89,21 @@ class _ConverterTabState extends State<ConverterTab> {
                     final x = dollar * 15453.54;
                     output = 'RP. ${x.toStringAsFixed(2)}';
                   });
-                } catch (e) {}
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      dismissDirection: DismissDirection.horizontal,
+                      content: Text(
+                        'Please input number not a char or any symbols exclude dot and coma',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(12))),
+                    ),
+                  );
+                }
               },
               child: const Text('Dollar to IDR'),
             ),
@@ -115,7 +129,21 @@ class _ConverterTabState extends State<ConverterTab> {
                     final x = dollar / 15453.54;
                     output = '\$. ${x.toStringAsFixed(2)}';
                   });
-                } catch (e) {}
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      dismissDirection: DismissDirection.horizontal,
+                      content: Text(
+                        'Please input number not a char or any symbols exclude dot and coma',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(12))),
+                    ),
+                  );
+                }
               },
               child: const Text('IDR to Dollar'),
             ),

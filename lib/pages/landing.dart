@@ -59,41 +59,45 @@ class LandingPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SizedBox(
-                    width: 170,
-                    height: double.infinity,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      height: double.maxFinite,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                        ),
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            CustomPageRouteTransition(route: const LoginPage()),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        child: const Text('Login'),
                       ),
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          CustomPageRouteTransition(route: const LoginPage()),
-                          (Route<dynamic> route) => false,
-                        );
-                      },
-                      child: const Text('Login'),
                     ),
                   ),
-                  SizedBox(
-                    width: 170,
-                    height: double.infinity,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor:
-                            const Color.fromARGB(228, 255, 255, 255),
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      height: double.maxFinite,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor:
+                              const Color.fromARGB(228, 255, 255, 255),
+                        ),
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            CustomPageRouteTransition(
+                                route: const RegisterPage()),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        child: const Text('Sign up'),
                       ),
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          CustomPageRouteTransition(
-                              route: const RegisterPage()),
-                          (Route<dynamic> route) => false,
-                        );
-                      },
-                      child: const Text('Sign up'),
                     ),
                   ),
                 ],

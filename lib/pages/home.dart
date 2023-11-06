@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:pemmobile/components/alertLogout.dart';
 import 'package:pemmobile/main.dart';
 import 'package:pemmobile/pages/Tab/articleTab.dart';
 import 'package:pemmobile/pages/Tab/bmiTab.dart';
@@ -55,10 +56,12 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(right: 12),
             child: IconButton(
                 onPressed: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      CustomPageRouteTransition(route: const LoginPage()),
-                      (route) => false);
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return const AlertLogout();
+                    },
+                  );
                 },
                 icon: const Icon(Icons.logout)),
           )

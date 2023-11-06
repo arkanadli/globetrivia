@@ -219,6 +219,7 @@ class _LoginPageState extends State<LoginPage> {
                         );
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
+                            dismissDirection: DismissDirection.horizontal,
                             content: Text(
                               'Login Successfully welcome ${usernameTextController.text}',
                               style: const TextStyle(

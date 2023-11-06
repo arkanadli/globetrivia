@@ -43,7 +43,7 @@ class _BMITabState extends State<BMITab> {
             controller: tinggiController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              hintText: 'Masukkan Tinggi Badan',
+              hintText: 'Masukkan Tinggi Badan (cm)',
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white54),
                 borderRadius: BorderRadius.all(
@@ -65,7 +65,7 @@ class _BMITabState extends State<BMITab> {
             controller: beratController,
             keyboardType: TextInputType.number,
             decoration: const InputDecoration(
-              hintText: 'Masukkan Berat Badan',
+              hintText: 'Masukkan Berat Badan (kg)',
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: Colors.white54),
                 borderRadius: BorderRadius.all(
@@ -152,9 +152,35 @@ class _BMITabState extends State<BMITab> {
                     double berat = double.parse(beratController.text);
                     double tinggi = (int.parse(tinggiController.text) / 100);
                     final x = berat / (tinggi * tinggi);
-                    outputController.text = x.toStringAsFixed(2);
+                    String result = '';
+                    if (x < 18.5) {
+                      result = 'Underweight';
+                    } else if (x < 23) {
+                      result = 'Normal';
+                    } else if (x < 25) {
+                      result = 'Overweight';
+                    } else if (x < 30) {
+                      result = 'Obese I';
+                    } else {
+                      result = 'Obese II';
+                    }
+                    outputController.text = result;
                   });
-                } catch (e) {}
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      dismissDirection: DismissDirection.horizontal,
+                      content: Text(
+                        'Occur some error, please input valid number!',
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(12))),
+                    ),
+                  );
+                }
               },
               child: const Text('Calculate'),
             ),
