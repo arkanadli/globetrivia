@@ -23,13 +23,16 @@ class _ProfileTabState extends State<ProfileTab> {
               color: Color.fromARGB(255, 142, 50, 158),
             ),
           ),
+          const SizedBox(
+            height: 20,
+          ),
           Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(150),
                 boxShadow: const [
                   BoxShadow(
-                    color: Colors.purple,
-                    spreadRadius: 2,
+                    color: Color.fromARGB(136, 156, 49, 175),
+                    spreadRadius: 1,
                     blurRadius: 20,
                   )
                 ]),
