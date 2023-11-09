@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         child: SizedBox(
           width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(

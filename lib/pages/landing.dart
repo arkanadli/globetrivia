@@ -43,8 +43,8 @@ class LandingPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const SizedBox(
-              height: 50,
+            const Spacer(
+              flex: 2,
             ),
             Container(
               width: double.infinity,
@@ -102,7 +102,10 @@ class LandingPage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            const Spacer(
+              flex: 1,
+            ),
           ],
         ),
       ),

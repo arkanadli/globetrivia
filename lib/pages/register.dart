@@ -17,7 +17,7 @@ class RegisterPage extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(

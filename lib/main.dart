@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class CustomPageRouteTransition extends PageRouteBuilder {
-  final Widget route;
+  final Widget route; 
   CustomPageRouteTransition({required this.route})
       : super(
             pageBuilder: (context, animation, secondaryAnimation) {
