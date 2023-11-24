@@ -16,7 +16,7 @@ class LandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.asset(
-              'assets/LogoApp.png',
+              'assets/LogoApp.png ',
               width: 320,
             ),
             const SizedBox(
